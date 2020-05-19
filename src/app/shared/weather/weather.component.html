@@ -1,0 +1,73 @@
+
+<!-- Weather card -->
+<div class="py-5" >
+  <div class="container" *ngIf="!isLoading">
+    <div class="row hidden-md-up">
+      <div class="col-md-2" *ngIf="woeid != null"></div>
+      <div class=" p-4" [ngClass]="{'col-md-8': woeid != null, 'col-md-4':woeid == null }" *ngFor="let weather of WeatherData">
+        <div class="card">
+          <div class="card-block p-3">
+            <div class="row">
+              <div class="col-md-6 text-center">
+                <h4>Current Weather</h4>
+                <hr>
+                <h4 class="card-title">{{weather.title}}</h4>
+                <img class="card-image p-2" width="50" height="50" src="{{getIcon(weather.consolidated_weather[0].weather_state_abbr)}}">
+                <p>{{weather.consolidated_weather[0].weather_state_name}}</p>
+                <h1>{{roundup(weather.consolidated_weather[0].the_temp)}}&#8451;</h1>
+              </div>
+
+              <div class="col-md-6">
+                <h4 class="float-right">{{weather.time|date : 'EEEE'}}</h4>
+                <br>
+                <div class="float-right">
+                  <h6>Minimun Temp</h6>
+                  <p>{{roundup(weather.consolidated_weather[0].min_temp)}}&#8451;</p>
+                </div>
+                <div class="float-right">
+                  <h6>Maximum Temp</h6>
+                  <p>{{roundup(weather.consolidated_weather[0].max_temp)}}&#8451;</p>
+                </div>
+              </div>
+            </div>
+
+
+            <br>
+            <div class="card-text mt-5 float-left" *ngIf="woeid==null">
+              <a [routerLink]="['/weather', weather.woeid]" class="card-link">Get Details</a>
+            </div>
+            <hr>
+            <div class="row" *ngIf="woeid != null">
+              <div class="col-md-12">
+                <table >
+                  <tr>
+                      <td *ngFor="let dayresult of weather.consolidated_weather"><p *ngIf="(dayresult.applicable_date| date : 'EE') != (todaydate| date:'EE') ">{{dayresult.applicable_date | date : "EE"}}</p></td>
+                  </tr>
+                  <tr>
+                    <td *ngFor="let dayresult of weather.consolidated_weather"><p *ngIf="(dayresult.applicable_date| date : 'EE') != (todaydate| date:'EE') ">{{roundup(dayresult.max_temp)}}</p></td>
+                  </tr>
+                  <tr>
+                      <td *ngFor="let dayresult of weather.consolidated_weather"><p *ngIf="(dayresult.applicable_date| date : 'EE') != (todaydate| date:'EE') ">{{roundup(dayresult.the_temp)}}</p></td>
+                  </tr>
+                  <tr>
+                      <td *ngFor="let dayresult of weather.consolidated_weather"><p *ngIf="(dayresult.applicable_date| date : 'EE') != (todaydate| date:'EE') ">{{roundup(dayresult.min_temp)}}</p></td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-2" *ngIf="woeid != null"></div>
+    </div>
+  </div>
+  <!-- loader -->
+  <div class="container text-center" *ngIf="isLoading && WeatherData.length == 0 ">
+    <h5>Loading...</h5>
+  </div>
+  <!-- error/null view -->
+  <div class="container text-center" *ngIf="WeatherData.length == 0 && !isLoading && nooutput">
+    <h3>We Coudn't find Any Results</h3>
+  </div>
+</div>
+<!-- End Weather card -->
