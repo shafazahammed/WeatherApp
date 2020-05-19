@@ -2,6 +2,12 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.4.
 
+Its a Weather Checking App with the Help of metaWeather API.
+
+You can Search the Weather by Your City.
+
+I have listed some of cities details in its Home Page.
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
