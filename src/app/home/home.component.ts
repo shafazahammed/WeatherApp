@@ -23,26 +23,14 @@ export class HomeComponent implements OnInit {
 
 
   constructor(private router : Router,
-              private weatherService : WeatherService,
-              private actRoute : ActivatedRoute ) { }
+              private weatherService : WeatherService
+              ) { }
 
   ngOnInit(): void {
     this.WeatherData = [];
-    let routeparams = this.actRoute.snapshot.params;
-    console.log('today',this.today)
-    if(Object.keys(routeparams).length == 0){
-      let locations = ['Istanbul', 'Berlin', 'London', 'Helsinki', 'Dublin', 'Vancouver'];
-      this.findWeather(locations);
-      console.log('WeatherData -- ',this.WeatherData);
-    }
-    else if(routeparams.woeid){
-      this.woeid = routeparams.woeid;
-      this.getWeatherDetails();
-    }
-    else if(routeparams.location){
-      this.location = routeparams.location;
-      this.SearchLocation();
-    }
+    let locations = ['Istanbul', 'Berlin', 'London', 'Helsinki', 'Dublin', 'Vancouver'];
+    this.findWeather(locations);
+
   }
   SearchLocation(){
     this.inputerror = false;
