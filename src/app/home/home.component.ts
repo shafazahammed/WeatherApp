@@ -51,7 +51,6 @@ export class HomeComponent implements OnInit {
       return;
     }
     this.router.navigate(['/search', this.location]);
-    this.SearchWeather();
   }
 
   findWeather(locations){
@@ -75,29 +74,29 @@ export class HomeComponent implements OnInit {
     });
   }
 
-  SearchWeather(){
-    this.isLoading = true;
-    this.nooutput = false;
-    this.WeatherData = [];
-    this.weatherService.findWeather(this.location).subscribe(
-      (data:any) => {
-        console.log(data);
-        if(data.length > 0 && data[0].woeid){
-          this.weatherService.getWeatherDetails(data[0].woeid).subscribe(result =>{
-              this.isLoading = false;
-              this.WeatherData.push(result);
-          });
-        }
-        else{
-          this.isLoading = false;
-          this.nooutput = true;
-        }
-    },
-    err => {
-      this.isLoading = false;
-      console.log('err',err);
-    });
-  }
+  // SearchWeather(){
+  //   this.isLoading = true;
+  //   this.nooutput = false;
+  //   this.WeatherData = [];
+  //   this.weatherService.findWeather(this.location).subscribe(
+  //     (data:any) => {
+  //       console.log(data);
+  //       if(data.length > 0 && data[0].woeid){
+  //         this.weatherService.getWeatherDetails(data[0].woeid).subscribe(result =>{
+  //             this.isLoading = false;
+  //             this.WeatherData.push(result);
+  //         });
+  //       }
+  //       else{
+  //         this.isLoading = false;
+  //         this.nooutput = true;
+  //       }
+  //   },
+  //   err => {
+  //     this.isLoading = false;
+  //     console.log('err',err);
+  //   });
+  // }
 
   getWeatherDetails(){
     this.nooutput = false;
@@ -115,15 +114,6 @@ export class HomeComponent implements OnInit {
         this.nooutput = true;
       }
     })
-  }
-
-  roundup(value){
-    return Math.floor(value);
-  }
-
-  getIcon(attribute){
-    let Url = `https://www.metaweather.com/static/img/weather/png/${attribute}.png`;
-    return Url;
   }
 
 }
