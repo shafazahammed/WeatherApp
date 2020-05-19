@@ -8,13 +8,25 @@ You can Search the Weather by Your City.
 
 I have listed some of cities details in its Home Page.
 
+A <weather></weather> Custome Component or Shared Component is used in all the main components like Home/Search and Weather Details
+
+The search result will gives you a short information about Weather. By Clicking into deatailed view you will get more information about the weather.
+
 You can see the Current weather in city, Minimum Temperature and Maximum Temperature in Search View or Home View
 
 In DetailView You can See the Week temperature by its Day by Day.
 
 for Back End:
  I have used core PHP with metaWeather API function.
- weather.php file have all the functions I used in Back End
+ server/weather.php file have all the functions I used in Back End
+
+ There are 2 commands I used,
+ 1. search
+ 2. location
+
+ Search is used to get the Result of Our Search keyword/Parameter
+
+ Location is used to get the Details view by its 
 
 <!-- ## Development server
 
