@@ -12,7 +12,11 @@ You can see the Current weather in city, Minimum Temperature and Maximum Tempera
 
 In DetailView You can See the Week temperature by its Day by Day.
 
-## Development server
+for Back End:
+ I have used core PHP with metaWeather API function.
+ weather.php file have all the functions I used in Back End
+
+<!-- ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
@@ -34,4 +38,4 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 
 ## Further help
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md). -->
