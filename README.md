@@ -8,6 +8,10 @@ You can Search the Weather by Your City.
 
 I have listed some of cities details in its Home Page.
 
+You can see the Current weather in city, Minimum Temperature and Maximum Temperature in Search View or Home View
+
+In DetailView You can See the Week temperature by its Day by Day.
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
